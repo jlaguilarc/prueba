@@ -5,12 +5,13 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-
-
-	<div class="jumbotron jumbotron-fluid" style="background-color: #43DD21">
-	  <div class="container">
-	    <h1 class="display-4">Encuesta Momento Cero</h1>
-	  </div>
+	<header>
+		<img style="margin-top:10px; margin-left: 10px; padding: 5px; float: left;" src="{{ asset('images/logo_uts.png') }}" width="130">
+		<h1 style="float: left; margin-left: 5px; margin-top: 40px;" class="display-4">Encuesta Momento Cero</h1>
+	</header>
+	<div class="jumbotron jumbotron-fluid" style="background-color: #43DD21;">
+		<button onclick="location.href='{{ url('login')}}'" style="float: right; margin-right: 10px;" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top">
+  		Iniciar Sesión</button>
 	</div>
 
 	<div class="row">

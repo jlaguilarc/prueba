@@ -11,6 +11,12 @@ class ReportesController extends Controller
     	return view('reportes');
     }
 
+    /*
+    public function __construct()
+	{
+    	$this->middleware('auth');
+	}*/
+
     public function general(Request $request){
 
     	$estudiantesGraduadosIngenieria = 

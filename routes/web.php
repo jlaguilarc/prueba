@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('encuesta');
 });
 
 Route::get('/encuesta', 'EncuestaController@index');

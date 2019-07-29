@@ -70,7 +70,7 @@
 </head>
 <body>
     <header>
-        @include('header')
+       @include('header')
     </header>
 <div class="login-form">
     <form action="validacion" method="post">
