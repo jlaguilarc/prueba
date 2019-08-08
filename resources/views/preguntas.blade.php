@@ -10,8 +10,10 @@
 		<h1 style="float: left; margin-left: 5px; margin-top: 40px;" class="display-4">Encuesta Momento Cero</h1>
 	</header>
 	<div class="jumbotron jumbotron-fluid" style="background-color: #43DD21;">
-		<button onclick="location.href='{{ url('login')}}'" style="float: right; margin-right: 10px;" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top">
-  		Iniciar Sesión</button>
+		{{-- <button onclick="location.href='{{ url('login')}}'" style="float: right; margin-right: 10px;" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top">
+		  Iniciar Sesión</button> --}}
+		  <button onclick="location.href='{{ url('/encuesta')}}'" style="float: right; margin-right: 10px;" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top">
+				Regresar</button>
 	</div>
 
 	<div class="row">

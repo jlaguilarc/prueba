@@ -2,15 +2,24 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+//use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
-	protected $table = 'Usuario';
+	use Notifiable;
+
+	protected $table = 'usuario';
 	protected $primaryKey = 'cedula';
 	public $incrementing = false;
 	public $timestamps = false;
 
+	public function getAuthPassword()
+    {
+      return $this->pass;
+    }
 
 
 }

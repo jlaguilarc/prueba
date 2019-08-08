@@ -12,12 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('encuesta');
+    return redirect('/login');
 });
 
 Route::get('/encuesta', 'EncuestaController@index');
 
-Route::post('/validacion', 'Usuario@validar');
+Route::post('/validacion', 'Auth\LoginController@login');
 
 Route::post('/reportes/general', 'ReportesController@general');
 
@@ -33,6 +33,7 @@ Route::get('/home', function(){
 });
 
 
-Route::get('/login', function(){
-	return view('login');
-});
+Route::get('/login',  [ 'as' => 'login', 'uses' => 'UsuarioController@inicio']);
+
+Route::get('/logout', 'Auth\LoginController@logout');
+
