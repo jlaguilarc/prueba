@@ -11,7 +11,7 @@
 	<div class="jumbotron jumbotron-fluid" style="background-color: black">
 	  <div class="container">
 		<h1 class="display-4" style="color: white">Reportes</h1>
-		<button onclick="location.href='{{ url('/encuesta')}}'" style="float: right;" type="button" class="btn btn-danger"> Encuesta </button>
+		<button onclick="location.href='{{ url('/administrativo')}}'" style="float: right;" type="button" class="btn btn-danger"> Regresar </button>
 	  </div>
 	</div>
 

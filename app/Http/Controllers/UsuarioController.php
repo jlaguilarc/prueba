@@ -20,5 +20,9 @@ class UsuarioController extends Controller
 		}
 		
 		
-    }
+	}
+	
+	public function administrativo(){
+		return view('/administrativo');
+	}
 }

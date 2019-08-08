@@ -11,22 +11,14 @@
 		<h1 style="float: left; margin-left: 5px; margin-top: 40px;" class="display-4">Encuesta Egresados</h1>
 	</header>
 	<div class="jumbotron jumbotron-fluid" style="background-color: #43DD21;">
-		<button onclick="location.href='{{ url('logout')}}'" style="float: right;" type="button" class="btn btn-danger"> Cerrar Sesión </button>
-		{{-- <button onclick="location.href='{{ url('login')}}'" style="float: right; margin-right: 10px;" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top">
-			Iniciar Sesión</button> --}}
+		<button onclick="location.href='{{ url('login')}}'" style="float: right; margin-right: 10px;" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top">
+			Iniciar Sesión</button>
 	</div>
 
 	
 		<form action="/preguntas" method="GET">
-			<div class="row" style="margin-top: -2rem">
-				<div class="col-md-4">
-						<div class="list-group">
-								<button onclick="location.href='{{ url('reportes')}}'" type="button" class="list-group-item list-group-item-action active">
-										<i class="fas fa-address-book"></i> Reportes
-								</button>
-						</div>
-				</div>
-				<div class="text-center col-md-4">
+			<div class="row">
+				<div class="text-center col-md-4 offset-md-4">
 						<br><br><br>
 						<label>Cédula de Ciudadania</label>
 

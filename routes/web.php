@@ -12,10 +12,12 @@
 */
 
 Route::get('/', function () {
-    return redirect('/login');
+    return redirect('/encuesta');
 });
 
 Route::get('/encuesta', 'EncuestaController@index');
+
+Route::get('/administrativo', 'UsuarioController@administrativo')->middleware('auth');
 
 Route::post('/validacion', 'Auth\LoginController@login');
 
