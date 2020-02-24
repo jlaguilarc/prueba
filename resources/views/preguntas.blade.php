@@ -20,8 +20,6 @@
  		<div class="container">
  			<div class="col-md-12">
 	 			<form action="/guardar" method="POST">
-
-	 			  @foreach($usuario as $user)
 				   <div class="card">
 					  <div class="card-body">
 					    <h3 class="card-title text-center">Información del Graduado</h3>
@@ -30,19 +28,19 @@
 					    	<div class="form-group row">
 						    <label for="staticEmail" class="col-sm-2 col-form-label">Correo</label>
 						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="correo" name="correo" value="{{ $user->correo }}">
+						      <input type="text" class="form-control" id="correo" name="correo" value="{{ $post->datos[0]->PEGE_MAIL }}">
 						    </div>
 						    <label for="staticEmail" class="col-sm-2 col-form-label">Nombre</label>
 						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $user->nombre }}">
+						      <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $post->datos[0]->PENG_PRIMERNOMBRE.' '.$post->datos[0]->PENG_PRIMERAPELLIDO.' '.$post->datos[0]->PENG_SEGUNDOAPELLIDO}}">
 						    </div>
 						    <label for="staticEmail" class="col-sm-2 col-form-label">Teléfono</label>
 						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="telefono" name="telefono" value="{{ $user->ceulular }}">
+						      <input type="text" class="form-control" id="telefono" name="telefono" value="{{ $post->datos[0]->PEGE_TELEFONOCELULAR }}">
 						    </div>
 						    <label for="staticEmail" class="col-sm-2 col-form-label">Cédula</label>
 						    <div class="col-sm-10">
-						      <input type="text" name="cedula" class="form-control" id="cedula" value="{{ $user->idEstudiante }}">
+						      <input type="text" name="cedula" class="form-control" id="cedula" readonly="readonly" value="{{ $post->datos[0]->PEGE_DOCUMENTOIDENTIDAD }}">
 						    </div>
 						    <label for="staticEmail" class="col-sm-2 col-form-label">Programa</label>
 						    <div class="col-sm-10">
@@ -51,7 +49,7 @@
 
 						      	@foreach($programas as $programa)
 
-						      		@if( $user->programa->idPrograma == $programa->idPrograma)
+						      		@if( $post->datos[0]->PROG_NOMBRE == $programa->descripcion)
 						      			@php
 						      				$selected = 'selected';
 						      			@endphp
@@ -72,8 +70,21 @@
 						      <select name="idEstado" class="form-control">
 
 						      	@foreach($estados as $estado)
+						      	
+						      		<option {{$selected}} value="{{ $estado->idEstado }}">{{$estado->descripcion}}</option>
+						      	@endforeach
+						      	
+						      </select>
+						    </div>
 
-						      		@if( $user->estado->idEstado == $estado->idEstado)
+						<!-- mostrando genero -->
+						<label for="staticEmail" class="col-sm-2 col-form-label">Genero</label>
+						    <div class="col-sm-10">
+						      <select name="idGenero" class="form-control">
+
+						      	@foreach($genero as $g)
+
+						      	@if( $post->datos[0]->PENG_SEXO == $g->descripcion[0])
 						      			@php
 						      				$selected = 'selected';
 						      			@endphp
@@ -83,20 +94,20 @@
 						      			@endphp
 
 						      		@endif
-						      		<option {{$selected}} value="{{ $estado->idEstado }}">{{$estado->descripcion}}</option>
+						      	
+						      		<option {{$selected}} value="{{ $g->idGenero }}">{{$g->descripcion}}</option>
 						      	@endforeach
 						      	
 						      </select>
 						    </div>
+					<!-- Cierre mostrar genero -->
 						  </div>
 					    </div>
 					    
 					  </div>
 					</div>
 	 			  	
-				    
-		 		  @endforeach
-
+				
 
 
 		 		  <br>

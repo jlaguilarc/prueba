@@ -49,7 +49,7 @@
 				    <p>
 				    	<i class="fas fa-graduation-cap fa-3x"></i>
 				    </p>
-				    <a href="#" class="link btn btn-primary" data-info="graduados">Ver</a>
+				    <a href="{{ url('/reporte_graduados')}}" class="link btn btn-primary" data-info="graduados">Ver</a>
 				  </div>
 				</div>
 			</div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
 
 
 class EncuestaController extends Controller
@@ -18,16 +19,29 @@ class EncuestaController extends Controller
     public function preguntas(Request $request){
 
     	$cedula = $request->input('cedula');
-        $fecha_expedicion = $request->input('expedicion');
+        //$fecha_expedicion = $request->input('expedicion');
 
-        $date = Carbon::createFromDate($fecha_expedicion);
+        //hjkhkdhkajshdjkashdjkh
+        $client = new Client([
+        // Base URI is used with relative requests
+        'base_uri' => 'http://uts.edu.co/portal/consultas/frontend/web/index.php/site',
+        // You can set any number of default request options.
+        'timeout'  => 2.0,
+        ]);
 
-        $fecha_formateada = $date->format('Y-m-d');
+        $response = $client->request('GET', "index?documento={$cedula}");
 
-    	$usuario = \App\Estudiantes::where('idEstudiante',$cedula)->where('fecha_expedicion',$fecha_formateada)->exists();
+        $posts = json_decode($response->getBody()->getContents());
+        //jhjkhjhjh
+
+        //$date = Carbon::createFromDate($fecha_expedicion);
+
+        //$fecha_formateada = $date->format('Y-m-d');
+
+    	//$usuario = \App\Estudiantes::where('idEstudiante',$cedula)->where('fecha_expedicion',$fecha_formateada)->exists();
 
      
-        if(!$usuario){
+        if($posts->resultado==0){
             return redirect('/encuesta')->with('error','Fecha de Expedición o Cédula Incorrecta');
         }
 
@@ -37,21 +51,26 @@ class EncuestaController extends Controller
 
         $estados = \App\Estados::all();
 
-        $usuario = \App\Estudiantes::where('idEstudiante',$cedula)->get();
+        $genero = \App\Genero::all();
+
+        //$usuario = \App\Estudiantes::where('idEstudiante',$cedula)->get();
 
 
     	return view('preguntas',[
-	        'usuario' => $usuario,
+	        'post' => $posts,
 	        'categorias' => $categorias,
             'programas' => $programas,
-            'estados' => $estados
+            'estados' => $estados,
+            'genero' => $genero
 	    ]);
     }
 
     public function guardar(Request $request){
 
 
-        $estudiante = \App\Estudiantes::find($request->input("cedula"));
+        //$estudiante = \App\Estudiantes::find($request->input("cedula"));
+
+        $estudiante = new \App\Estudiantes();
 
         $estudiante->correo = $request->input("correo");
 
@@ -59,7 +78,7 @@ class EncuestaController extends Controller
 
         $estudiante->idEstudiante = $request->input("cedula");
 
-        $estudiante->telefono = $request->input("telefono");
+        $estudiante->celular = $request->input("telefono");
 
         $estudiante->idEstado = $request->input("idEstado");
 

@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,4 +37,10 @@ Route::get('/home', function(){
 Route::get('/login',  [ 'as' => 'login', 'uses' => 'UsuarioController@inicio']);
 
 Route::get('/logout', 'Auth\LoginController@logout');
+
+Route::get('reporte_graduados','reporte_graduados@index');
+
+Route::get('/ejemplo/{documento}', 'PostController@index');
+
+
 

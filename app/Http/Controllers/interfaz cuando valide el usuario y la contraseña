@@ -1,0 +1,4 @@
+interfaz cuando valide el usuario y la contraseña (usuario,contraseña) 
+
+interfaz banner (encuesta egresados) caja de texto y boton ingresar
+si el usuario existe trae los datos y las preguntas y despues iria un boton que diga guardar
